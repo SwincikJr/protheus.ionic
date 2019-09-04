@@ -1,0 +1,7 @@
+{
+  "name": "protheus",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="float: left">
+        Produtos
+      </ion-title>
+      <a href='/home' style="float: right; margin-right: 15px; text-decoration: none">Voltar</a>
+    </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+    <div style="margin-top: 15px">
+      <div *ngFor="let produto of produtos.Produtos" style="padding: 15px;font-size:0.9em">
+        Filial: {{ produto.Filial }} <br/>
+        Codigo: {{ produto.Codigo }}
+      </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <div (click)="previousPage()" style="width: 50%;float:left;text-align:center">
+        < Prev
+      </div>
+      <div (click)="nextPage()" style="width:50%;float:left;text-align:center">
+        Next >
+      </div>
+    </div>
+
+    <div style="text-align:center;font-size: 0.85em">
+      Pagina atual: {{ page }}
+    </div>
+
+</ion-content>
