@@ -8,6 +8,18 @@
 </ion-header>
   
 <ion-content>
-    <p style="text-align:center">Hello World!</p>
-    <ion-button shape="round" color="primary" expand="block" (click)="dismiss()" style="width:75%;margin:auto">Fechar</ion-button>
+    <div style="padding:5px;margin-top:15px;">
+      <ion-card>
+        <ion-card-content>
+            <ion-item>
+              <ion-label position="stacked">Codigo do Produto</ion-label>
+              <ion-input (input)="codigo=$event.target.value"></ion-input>
+            </ion-item>
+        </ion-card-content>
+      </ion-card> 
+    </div>
+    <div style="padding:5px;margin-top:15px;">
+      <ion-button shape="round" color="success" expand="block" (click)="dismiss('s')" style="width:75%;margin:auto;margin-bottom: 15px;">Buscar</ion-button>
+      <ion-button shape="round" color="primary" expand="block" (click)="dismiss('c')" style="width:75%;margin:auto">Fechar</ion-button>
+    </div>
 </ion-content>

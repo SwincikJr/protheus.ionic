@@ -67,7 +67,7 @@ export class ProdutosPage {
       component: FindModal
     })
 
-    modal.onWillDismiss().then(data => console.log(data))
+    modal.onWillDismiss().then(data => { this.tryFind(data) })
 
     return await modal.present()
   
@@ -83,6 +83,30 @@ export class ProdutosPage {
 
     await alert.present();
 
+  }
+
+  async tryFind(data)
+  {
+    console.log(data)
+    if(data.data.search)
+    {
+      if(data.data.data == "")
+      {
+        const alert = await this.alertController.create({
+          header: 'Alerta',
+          message: 'Digite um codigo para busca',
+          buttons: ['Ok']
+        });
+    
+        await alert.present();
+
+        return
+
+      }
+
+      // requisição na API com código
+
+    }
   }
 
 }

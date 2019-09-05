@@ -12,10 +12,26 @@ export class FindModal
 
     constructor(public modalController: ModalController) {}
 
-    dismiss() {
+    public codigo = ""
+
+    dismiss(event) {
+
+        let data = null
+        let search = false
+
+        if(event == 's')
+        {
+            data = this.codigo
+            search = true
+        }
+        else
+        {
+            data = {}
+        }
 
         this.modalController.dismiss({
-            'dismissed': true
+            'search': search,
+            'data': data
         });
 
     }
