@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModalController, AlertController } from '@ionic/angular';
+import { FindModal } from './FindModal/find.modal';
 
 @Component({
   selector: 'app-produtos',
@@ -8,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProdutosPage {
 
-  constructor(private http: HttpClient) 
+  constructor(private http: HttpClient, public modalController: ModalController, public alertController: AlertController) 
   {
 
     this.produtos = { Produtos: [] }
@@ -26,22 +28,25 @@ export class ProdutosPage {
 
   nextPage() {
 
-    let nextFirstItem = (this.page * 10) + 1
-    let previousList = this.produtos
+    //let nextFirstItem = (this.page * 10) + 1
+    //let previousList = this.produtos
 
-    this.http.get('http://localhost:8080/rest/produto/' + nextFirstItem).subscribe(response => {
-      console.log(response);
-      this.produtos = response
-      if(this.produtos.Produtos.length > 0)
-      {
-        this.page++
-      }
-      else
-      {
-        alert("Fim da Lista")
-        this.produtos = previousList
-      }
-    })
+    //this.http.get('http://localhost:8080/rest/produto/' + nextFirstItem).subscribe(response => {
+      //console.log(response);
+      //this.produtos = response
+      //if(this.produtos.Produtos.length > 0)
+      //{
+        //this.page++
+      //}
+      //else
+      //{
+        //alert("Fim da Lista")
+        //this.produtos = previousList
+      //}
+    //})
+
+    this.presentAlert();
+
   }
 
   previousPage() {
@@ -54,6 +59,30 @@ export class ProdutosPage {
         this.produtos = response
       })
     }
+  }
+
+  async presentModal() {
+  
+    const modal = await this.modalController.create({
+      component: FindModal
+    })
+
+    modal.onWillDismiss().then(data => console.log(data))
+
+    return await modal.present()
+  
+  }
+
+  async presentAlert() {
+
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: 'Fim da lista de produtos.',
+      buttons: ['Ok']
+    });
+
+    await alert.present();
+
   }
 
 }

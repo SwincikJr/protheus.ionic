@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ProdutosPage } from './produtos.page';
+import { FindModal } from './FindModal/find.modal';
 
 @NgModule({
   imports: [
@@ -15,10 +16,14 @@ import { ProdutosPage } from './produtos.page';
       {
         path: '',
         component: ProdutosPage
+      },
+      {
+        path: 'findModal',
+        component: FindModal
       }
     ])
   ],
-  declarations: [ProdutosPage]
+  declarations: [ProdutosPage, FindModal]
 })
 
 export class ProdutosPageModule {}
